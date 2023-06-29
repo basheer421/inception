@@ -1,6 +1,10 @@
 
 up:
-	sudo docker compose -f srcs/docker-compose.yml up -d
+	mkdir -p /home/${USER}/data/mariadb
+	docker compose -f srcs/docker-compose.yml up -d
 
-fclean:
-	sudo docker system prune -a --volumes
+vclean:
+	docker system prune -a --volumes
+
+re: vclean
+	$(MAKE) up
