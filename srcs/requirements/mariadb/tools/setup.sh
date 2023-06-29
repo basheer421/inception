@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/etc/init.d/mariadb setup
+mysql_install_db --user=mysql --datadir=/var/lib/mysql
 echo "[mysqld]" > /etc/mysql/my.cnf
 echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
 rc-service mariadb starts

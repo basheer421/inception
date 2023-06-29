@@ -6,4 +6,6 @@ COPY tools/setup.sh /usr/local/bin/
 
 EXPOSE 3306
 
+USER mysql
+
 CMD ["/usr/local/bin/setup.sh"]
