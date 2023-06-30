@@ -7,8 +7,8 @@ services:
     networks:
       - network1
     # restart: on-failure COMMENTED FOR DEBUGGING
-    # volumes:
-    #   - ./data:/var/lib/mysql/
+    volumes:
+      - ./data:/var/lib/mysql
     ports:
       - 3306:3306
 
