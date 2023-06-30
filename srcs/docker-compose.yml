@@ -6,17 +6,14 @@ services:
     container_name: mariadb
     networks:
       - network1
-    restart: on-failure
-    volumes:
-      - DB:/var/lib/mysql/
+    # restart: on-failure COMMENTED FOR DEBUGGING
+    # volumes:
+    #   - ./data:/var/lib/mysql/
+    ports:
+      - 3306:3306
 
-volumes:
-  DB:
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/$USER/data/mariadb/
-    
+# volumes:
+#   DB: 
 
 networks:
   network1:
