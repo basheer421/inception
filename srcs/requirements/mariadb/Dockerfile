@@ -9,6 +9,7 @@ RUN apk add --no-cache mariadb mariadb-client \
 EXPOSE 3306
 
 COPY conf/my.cnf /etc/my.cnf
+COPY tools/setup.sh /usr/local/bin/setup.sh
 
-CMD ["mysqld", "--user=mysql"]
+CMD ["/bin/sh", "/usr/local/bin/setup.sh"]
 
