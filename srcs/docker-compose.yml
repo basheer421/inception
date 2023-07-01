@@ -11,6 +11,8 @@ services:
       - WPDB:/var/www
     ports:
       - 80:80
+    depends_on:
+        - wordpress
     
 
   wordpress:
@@ -21,9 +23,7 @@ services:
       restart: on-failure
       volumes:
         - WPDB:/var/www
-      ports:
-        - 80:80
-      depends-on:
+      depends_on:
         - mariadb
 
   mariadb:
