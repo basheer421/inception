@@ -11,6 +11,20 @@ services:
       - WPDB:/var/www
     ports:
       - 80:80
+    
+
+  wordpress:
+      build: requirements/wordpress/
+      container_name: wordpress
+      networks:
+        - network1
+      restart: on-failure
+      volumes:
+        - WPDB:/var/www
+      ports:
+        - 80:80
+      depends-on:
+        - mariadb
 
   mariadb:
     build: requirements/mariadb/
