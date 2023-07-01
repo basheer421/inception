@@ -12,4 +12,3 @@ COPY conf/my.cnf /etc/my.cnf
 COPY tools/setup.sh /usr/local/bin/setup.sh
 
 CMD ["/bin/sh", "/usr/local/bin/setup.sh"]
-

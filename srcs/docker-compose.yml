@@ -1,6 +1,17 @@
 version: '3'
 
 services:
+  nginx:
+    build: requirements/nginx/
+    container_name: nginx
+    networks:
+      - network1
+    restart: on-failure
+    volumes:
+      - WPDB:/var/www
+    ports:
+      - 80:80
+
   mariadb:
     build: requirements/mariadb/
     container_name: mariadb
@@ -18,6 +29,11 @@ volumes:
       o: bind
       type: none
       device: /home/$USER/data/mariadb
+  WPDB: 
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/$USER/data/wordpress
 
 networks:
   network1:
