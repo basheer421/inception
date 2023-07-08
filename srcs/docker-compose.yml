@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   nginx:
@@ -13,6 +13,8 @@ services:
       - 80:80
     depends_on:
         - wordpress
+    env_file:
+      - ./.env
     
 
   wordpress:
@@ -20,11 +22,15 @@ services:
       container_name: wordpress
       networks:
         - network1
-      restart: on-failure
+      # restart: on-failure
       volumes:
         - WPDB:/var/www
+      ports:
+        - 9000:9000
       depends_on:
         - mariadb
+      env_file:
+        - ./.env
 
   mariadb:
     build: requirements/mariadb/
@@ -36,6 +42,8 @@ services:
       - DB:/var/lib/mysql
     ports:
       - 3306:3306
+    env_file:
+      - ./.env
 
 volumes:
   DB: 

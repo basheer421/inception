@@ -13,9 +13,20 @@ down:
 
 vclean:
 	$(MAKE) down
-	docker system prune -a
+	docker system prune  --all --force
 
-re: vclean
+fclean:
+	@if [ ! -z "$$(docker ps -aq)" ]; then \
+		docker stop $$(docker ps -aq); \
+	fi
+	@docker system prune --all --force --volumes
+	@if [ ! -z "$$(docker volume ls -q)" ]; then \
+		docker volume rm $$(docker volume ls -q); \
+	fi
+	@sudo rm -rf /home/${USER}/data
+
+
+re: fclean
 	$(MAKE) up
 
 .PHONY	: all build down re clean fclean
