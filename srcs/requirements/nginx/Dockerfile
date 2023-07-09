@@ -1,8 +1,10 @@
 FROM alpine:3.17.4
 
-RUN apk add --no-cache nginx && rm -rf /var/cache/apk/*
+ARG DOMAIN_NAME
 
-EXPOSE 80
+RUN apk add --no-cache nginx openssl && rm -rf /var/cache/apk/*
+
+EXPOSE 443
 
 COPY tools/run.sh /usr/local/bin/run.sh
 COPY conf/default.conf /etc/nginx/http.d/
