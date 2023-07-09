@@ -22,7 +22,7 @@ services:
       container_name: wordpress
       networks:
         - network1
-      # restart: on-failure
+      restart: on-failure
       volumes:
         - WPDB:/var/www
       ports:

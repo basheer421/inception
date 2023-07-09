@@ -1,9 +1,5 @@
 #!/bin/sh
 
-if [ -f /var/www/html/wordpress/wp-config.php ]; then
-	php-fpm81 --nodaemonize
-fi
-
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
@@ -35,4 +31,6 @@ wp --allow-root user create $WP_USER2 "${WP_EMAIL2}" --user_pass=$WP_PASS2 --rol
 
 chmod -R 777 /var/www/html/wordpress
 
-php-fpm81 --nodaemonize
+if [ -f /var/www/html/wordpress/wp-config.php ]; then
+	php-fpm81 --nodaemonize
+fi
