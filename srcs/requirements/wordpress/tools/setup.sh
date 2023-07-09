@@ -21,14 +21,14 @@ echo "hello world" > index.html
 
 sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" /etc/php81/php-fpm.d/www.conf
 echo 'listen.owner = nobody' >> /etc/php81/php-fpm.d/www.conf
-echo 'listen.group = nobody' >> /etc/php81/php-fpm.d/www.conf
+echo 'listen.group = nobody' >> /etc/phphp-fpm.d/www.conf
 
 # ADD ENV VARS
-wp --allow-root --path=/var/www/html/wordpress core install --url="bammar.42.fr" \
-   --title="WordPress" --admin_user=$DB_USER --admin_password=$DB_PASS \
-   --admin_email="bush@bush.bush"
+# wp --allow-root --path=/var/www/html/wordpress core install --url="bammar.42.fr" \
+#    --title="WordPress" --admin_user=$DB_USER --admin_password=$DB_PASS \
+#    --admin_email="bush@bush.bush"
 
 # ADD ENV VARS
-wp user create man "bush2@bush.bush" --role=author --user_pass=123
+# wp user create man "bush2@bush.bush" --role=author --user_pass=123
 
 php-fpm81 --nodaemonize
