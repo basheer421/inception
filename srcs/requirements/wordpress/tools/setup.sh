@@ -21,7 +21,7 @@ echo "hello world" > index.html
 
 sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" /etc/php81/php-fpm.d/www.conf
 echo 'listen.owner = nobody' >> /etc/php81/php-fpm.d/www.conf
-echo 'listen.group = nobody' >> /etc/phphp-fpm.d/www.conf
+echo 'listen.group = nobody' >> /etc/php81/php-fpm.d/www.conf
 
 # ADD ENV VARS
 # wp --allow-root --path=/var/www/html/wordpress core install --url="bammar.42.fr" \
